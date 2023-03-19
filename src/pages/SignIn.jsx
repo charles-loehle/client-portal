@@ -25,7 +25,7 @@ const SignIn = () => {
 		e.preventDefault();
 		try {
 			const auth = getAuth();
-			console.log(auth);
+			//console.log(auth);
 			const userCredential = await signInWithEmailAndPassword(
 				auth,
 				email,
@@ -34,7 +34,7 @@ const SignIn = () => {
 
 			if (userCredential.user) {
 				navigate('/profile');
-				console.log(auth.currentUser + ' is logged in.');
+				//console.log(auth.currentUser + ' is logged in.');
 			}
 		} catch (error) {
 			toast.error('Bad user credentials');

@@ -4,9 +4,8 @@ import { getAuth, updateProfile } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 const Header = () => {
-	const [user, setUser] = useState(null);
-
 	const auth = getAuth();
+	const [user, setUser] = useState(null);
 
 	useEffect(() => {
 		console.log(auth.currentUser);
@@ -28,7 +27,8 @@ const Header = () => {
 			<nav className="navbar navbar-expand-lg navbar-light bg-white">
 				<div className="container-fluid">
 					<Link className="navbar-brand" to="/">
-						CLIENT PORTAL
+						CLIENT PORTAL -{' '}
+						{auth.currentUser && 'Hello ' + auth.currentUser.displayName}
 					</Link>
 					<button
 						className="navbar-toggler"
@@ -63,6 +63,18 @@ const Header = () => {
 									Sign Up
 								</Link>
 							</li>
+							{auth.currentUser && (
+								<li className="nav-item">
+									<Link
+										className={`nav-link ${
+											pathMatchRoute('/profile') ? 'active' : ''
+										}`}
+										to="/profile"
+									>
+										My Profile
+									</Link>
+								</li>
+							)}
 						</ul>
 					</div>
 				</div>
