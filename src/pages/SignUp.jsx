@@ -57,7 +57,7 @@ const SignUp = () => {
 		<div className="SignUp text-center pt-5">
 			<main className="form-signup w-100 m-auto">
 				<form onSubmit={onSubmit}>
-					<h1 className="h3 mb-3 fw-normal">Sign Up For Your Client Portal</h1>
+					<h1 className="h3 mb-3 fw-normal">Sign Up For Client Portal</h1>
 
 					<div className="form-floating">
 						<input

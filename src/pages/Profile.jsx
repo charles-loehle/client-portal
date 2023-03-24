@@ -56,18 +56,26 @@ const Profile = () => {
 			<div className="Profile">
 				<div className="profile-header">
 					<h2>
-						My Dashboard -{' '}
+						Home -{' '}
 						{auth.currentUser ? auth.currentUser.displayName : 'Not logged in'}
 					</h2>
-					<button onClick={onLogout} type="button" className="btn btn-link">
+					{/* <button onClick={onLogout} type="button" className="btn btn-link">
 						Logout
-					</button>
+					</button> */}
 				</div>
 
 				<main>
 					<div className="profile-details">
-						<p className="profile-details__text">Personal Details</p>
-						<p
+						<p className="profile-details__text">Welcome to Client Portal</p>
+						<p>
+							Click on "My Details" in the sidebar to edit your personal
+							information.
+						</p>
+						<p>
+							Click on "My Documents" in the sidebar to upload your first
+							document.
+						</p>
+						{/* <p
 							onClick={() => {
 								changeDetails && onSubmit();
 								setChangeDetails(prevState => !prevState);
@@ -77,8 +85,8 @@ const Profile = () => {
 							{changeDetails ? 'done' : 'change'}
 						</p>
 					</div>
-					<div className="profile-card">
-						<form>
+					<div className="profile-card"> */}
+						{/* <form>
 							<input
 								type="text"
 								id="name"
@@ -103,12 +111,12 @@ const Profile = () => {
 								value={email}
 								onChange={onChange}
 							/>
-						</form>
+						</form> */}
 					</div>
 
-					<Link to="/profile/create-folder" className="create-listing">
+					{/* <Link to="/profile/create-folder" className="create-listing">
 						Upload a document
-					</Link>
+					</Link> */}
 				</main>
 			</div>
 		</>

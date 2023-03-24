@@ -12,7 +12,7 @@ const Sidebar = () => {
 						<Link className="nav-link active" aria-current="page" to="/profile">
 							<i className="bi bi-house-door"></i>
 							<span data-feather="home" className="align-text-bottom"></span>
-							Dashboard
+							Home
 						</Link>
 					</li>
 					<li className="nav-item">

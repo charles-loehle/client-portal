@@ -45,7 +45,7 @@ const SignIn = () => {
 		<div className="SignIn text-center pt-5">
 			<main className="form-signin w-100 m-auto">
 				<form onSubmit={onSubmit}>
-					<h1 className="h3 mb-3 fw-normal">Sign In To Your Client Portal</h1>
+					<h1 className="h3 mb-3 fw-normal">Sign In To Client Portal</h1>
 
 					<div className="form-floating">
 						<input

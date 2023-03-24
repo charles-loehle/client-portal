@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { getAuth, updateProfile } from 'firebase/auth';
 import Sidebar from '../components/Sidebar';
 import MyDocuments from '../components/MyDocuments';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const Layout = ({ children }) => {
 	const auth = getAuth();
@@ -20,7 +21,7 @@ const Layout = ({ children }) => {
 					className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6"
 					to="/profile"
 				>
-					Your Client Portal
+					Client Portal
 				</Link>
 				<button
 					className="navbar-toggler position-absolute d-md-none collapsed"
@@ -55,6 +56,7 @@ const Layout = ({ children }) => {
 					<main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 							<h1 className="h2">Dashboard</h1>
+							<Breadcrumbs />
 							<div className="btn-toolbar mb-2 mb-md-0">
 								<div className="btn-group me-2">
 									<button

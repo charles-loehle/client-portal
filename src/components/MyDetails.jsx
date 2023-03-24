@@ -55,16 +55,15 @@ const MyDetails = () => {
 
 			<main>
 				<div className="profile-details">
-					<p className="profile-details__text">Personal Details</p>
-					<p
+					<button
+						className="btn btn-primary mb-3"
 						onClick={() => {
 							changeDetails && onSubmit();
 							setChangeDetails(prevState => !prevState);
 						}}
-						className="changePersonalDetails"
 					>
-						{changeDetails ? 'done' : 'change'}
-					</p>
+						{changeDetails ? 'Save' : 'Edit'}
+					</button>
 				</div>
 				<div className="profile-card">
 					<form>
@@ -95,9 +94,9 @@ const MyDetails = () => {
 					</form>
 				</div>
 
-				<Link to="/profile/create-folder" className="create-listing">
+				{/* <Link to="/profile/create-folder" className="create-listing">
 					Upload a document
-				</Link>
+				</Link> */}
 			</main>
 		</div>
 	);

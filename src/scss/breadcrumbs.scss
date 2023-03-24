@@ -1,0 +1,18 @@
+/* breadcrumbs */
+.Breadcrumbs {
+	max-width: 1200px;
+}
+.Breadcrumbs > * {
+	// display: inline-block;
+	margin-right: 10px;
+}
+.Breadcrumbs .crumb:after {
+	content: '>';
+	margin-left: 10px;
+}
+.Breadcrumbs .crumb:last-child:after {
+	display: none;
+}
+// .Breadcrumbs .crumb a {
+// 	color: #ddd;
+// }
