@@ -9,9 +9,15 @@ const Sidebar = () => {
 			<div className="position-sticky pt-3 sidebar-sticky">
 				<ul className="nav flex-column">
 					<li className="nav-item">
-						<Link className="nav-link active" aria-current="page" to="/profile">
-							<i className="bi bi-house-door"></i>
-							<span data-feather="home" className="align-text-bottom"></span>
+						<Link
+							className="nav-link active d-flex"
+							aria-current="page"
+							to="/profile"
+						>
+							<div className="me-1 d-flex">
+								<i className="bi bi-house-door"></i>
+							</div>
+							{/* <span data-feather="home" className="align-text-bottom"></span> */}
 							Home
 						</Link>
 					</li>

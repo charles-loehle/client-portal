@@ -11,7 +11,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
-import CreateFolder from './pages/CreateFolder';
+import CreateFile from './pages/CreateFile';
 import PrivateRoute from './components/PrivateRoute';
 import Folder from './pages/Folder';
 import EditFolderName from './pages/EditFolderName';
@@ -30,7 +30,7 @@ const router = createBrowserRouter(
 				<Route path="/profile" element={<PrivateRoute />}>
 					<Route index element={<Profile />} />
 					<Route path="/profile/my-details" element={<MyDetails />} />
-					<Route path="/profile/create-folder" element={<CreateFolder />} />
+					<Route path="/profile/create-file" element={<CreateFile />} />
 
 					<Route path="/profile/my-documents" element={<MyDocuments />} />
 				</Route>

@@ -15,7 +15,7 @@ const Breadcrumbs = () => {
 				</div>
 			);
 		});
-	console.log(location.pathname.split('/'));
+	// console.log(location.pathname.split('/'));
 
 	return <div className="Breadcrumbs">{crumbs}</div>;
 };
