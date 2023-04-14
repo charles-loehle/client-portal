@@ -1,14 +1,6 @@
 import { getAuth, updateProfile } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import {
-	collection,
-	updateDoc,
-	doc,
-	getDoc,
-	onSnapshot,
-	query,
-} from 'firebase/firestore';
+import { updateDoc, doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 
@@ -22,13 +14,10 @@ const MyDetails = () => {
 		name: auth.currentUser.displayName,
 		email: auth.currentUser.email,
 	});
-	const [loading, setLoading] = useState(true);
-	const [files, setFiles] = useState(null);
 
 	const { name, email } = formData;
 
-	// console.log(auth.currentUser);
-
+	// get user details
 	useEffect(() => {
 		// 1. using async/await
 		// const fetchUserFiles = async () => {
@@ -52,7 +41,6 @@ const MyDetails = () => {
 		onSnapshot(q, doc => {
 			setAddress(doc.data().address);
 			setPhone(doc.data().phone);
-			//console.log(doc.data());
 		});
 	}, [auth.currentUser.uid]);
 
@@ -163,11 +151,6 @@ const MyDetails = () => {
 								onChange={onChange}
 							/>
 						</div>
-						{/* <div className="col-12">
-							<button type="submit" className="btn btn-primary">
-								Sign in
-							</button>
-						</div> */}
 					</form>
 				</div>
 			</main>

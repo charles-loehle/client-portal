@@ -1,84 +1,46 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Link, NavLink } from 'react-router-dom';
-import { getAuth, updateProfile } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+import SearchBar from './SearchBar';
 
-const Header = () => {
+const Header = ({ myprops }) => {
 	const auth = getAuth();
-	const [user, setUser] = useState(null);
-
-	useEffect(() => {
-		console.log(auth.currentUser);
-		setUser(auth.currentUser);
-		// in the browser user data is stored in Application->Storage->IndexedDB->firebaseLocalStorageDb->firebaseLocalStorage
-	}, [auth.currentUser]);
-
 	const navigate = useNavigate();
-	const location = useLocation();
 
-	const pathMatchRoute = route => {
-		if (route === location.pathname) {
-			return true;
-		}
+	const onLogout = () => {
+		auth.signOut();
+		navigate('/');
 	};
 
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg navbar-light bg-white">
-				<div className="container-fluid">
-					<Link className="navbar-brand" to="/">
-						CLIENT PORTAL -{' '}
-						{auth.currentUser && 'Hello ' + auth.currentUser.displayName}
-					</Link>
-					<button
-						className="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span className="navbar-toggler-icon"></span>
-					</button>
-					<div className="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-							<li className="nav-item">
-								<Link
-									className={`nav-link ${
-										pathMatchRoute('/sign-in') ? 'active' : ''
-									}`}
-									to="/sign-in"
-								>
-									Sign In
-								</Link>
-							</li>
-							<li className="nav-item">
-								<Link
-									className={`nav-link ${
-										pathMatchRoute('/sign-up') ? 'active' : ''
-									}`}
-									to="/sign-up"
-								>
-									Sign Up
-								</Link>
-							</li>
-							{auth.currentUser && (
-								<li className="nav-item">
-									<Link
-										className={`nav-link ${
-											pathMatchRoute('/profile') ? 'active' : ''
-										}`}
-										to="/profile"
-									>
-										My Profile
-									</Link>
-								</li>
-							)}
-						</ul>
+			<header className="Header navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+				<Link
+					className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6"
+					to="/profile"
+				>
+					Client Portal
+				</Link>
+				<button
+					className="navbar-toggler position-absolute d-md-none collapsed"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#sidebarMenu"
+					aria-controls="sidebarMenu"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<SearchBar myprops={myprops} />
+				<div className="navbar-nav">
+					<div className="nav-item text-nowrap">
+						<a className="nav-link px-3" href="#" onClick={onLogout}>
+							Sign out
+						</a>
 					</div>
 				</div>
-			</nav>
+			</header>
 		</>
 	);
 };

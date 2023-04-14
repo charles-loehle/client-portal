@@ -4,11 +4,11 @@
 }
 .Breadcrumbs > * {
 	// display: inline-block;
-	margin-right: 10px;
+	//margin-right: 10px;
 }
 .Breadcrumbs .crumb:after {
-	content: '>';
-	margin-left: 10px;
+	content: '>>';
+	//margin-left: 10px;
 }
 .Breadcrumbs .crumb:last-child:after {
 	display: none;

@@ -13,8 +13,6 @@ import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
 import CreateFile from './pages/CreateFile';
 import PrivateRoute from './components/PrivateRoute';
-import Folder from './pages/Folder';
-import EditFolderName from './pages/EditFolderName';
 import RootLayout from './layouts/RootLayout';
 import MyDocuments from './components/MyDocuments';
 import MyDetails from './components/MyDetails';

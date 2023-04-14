@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthStatus } from '../hooks/useAuthStatus';
 import Spinner from './Spinner';
+import { useState } from 'react';
 
 const PrivateRoute = () => {
 	const { loggedIn, checkingStatus } = useAuthStatus();
@@ -9,7 +10,11 @@ const PrivateRoute = () => {
 		return <Spinner />;
 	}
 
-	return loggedIn ? <Outlet /> : <Navigate to="/sign-in" />;
+	return loggedIn ? (
+		<Outlet myprops={'private props'} />
+	) : (
+		<Navigate to="/sign-in" />
+	);
 };
 
 export default PrivateRoute;
