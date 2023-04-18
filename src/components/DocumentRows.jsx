@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getAuth } from 'firebase/auth';
 import {
 	updateDoc,
 	doc,
@@ -12,59 +11,31 @@ import {
 	toDate,
 	Timestamp,
 } from 'firebase/firestore';
-import { db } from '../firebase.config';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
-const DocumentRows = ({ myprops }) => {
-	const auth = getAuth();
-	const [loading, setLoading] = useState(true);
-	const [files, setFiles] = useState(null);
-
-	// get files from database
-	useEffect(() => {
-		const fetchUserFiles = async () => {
-			try {
-				// get a reference to the client-docs collection
-				const filesRef = collection(db, 'client-docs');
-
-				// create a query
-				const q = query(
-					filesRef,
-					where('userRef', '==', auth.currentUser.uid),
-					orderBy('timestamp', 'desc')
-				);
-
-				// execute query
-				const querySnap = await getDocs(q);
-
-				const files = [];
-
-				querySnap.forEach(doc => {
-					return files.push({
-						id: doc.id,
-						data: doc.data(),
-					});
-				});
-
-				setFiles(files);
-				setLoading(false);
-			} catch (error) {
-				toast.error('Could not fetch files, please reload page');
-			}
-		};
-
-		fetchUserFiles();
-	}, [auth.currentUser.uid]);
-
+const DocumentRows = ({ files, loading, filterText }) => {
 	return (
 		<>
 			{!loading &&
 				files?.length > 0 &&
 				files.map((file, index) => {
+					console.log(
+						file.data.name.toLowerCase().indexOf(filterText.toLowerCase())
+					);
+
+					// format timestamps
 					let dateObj = new Timestamp(
 						file.data.timestamp.seconds,
 						file.data.timestamp.nanoseconds
 					);
+
+					if (
+						file.data.name.toLowerCase().indexOf(filterText.toLowerCase()) ===
+						-1
+					) {
+						return;
+					}
+
 					return (
 						<tr key={index}>
 							<td>{index + 1}</td>

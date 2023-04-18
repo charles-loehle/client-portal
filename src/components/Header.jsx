@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import SearchBar from './SearchBar';
 
-const Header = ({ myprops }) => {
+const Header = ({ files, loading, filterText, onFilterTextChange }) => {
 	const auth = getAuth();
 	const navigate = useNavigate();
 
@@ -32,7 +32,12 @@ const Header = ({ myprops }) => {
 				>
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<SearchBar myprops={myprops} />
+				<SearchBar
+					files={files}
+					loading={loading}
+					filterText={filterText}
+					onFilterTextChange={onFilterTextChange}
+				/>
 				<div className="navbar-nav">
 					<div className="nav-item text-nowrap">
 						<a className="nav-link px-3" href="#" onClick={onLogout}>

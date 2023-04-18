@@ -1,6 +1,6 @@
 import DocumentRows from './DocumentRows';
 
-const DocumentsTable = ({ myprops }) => {
+const DocumentsTable = ({ files, loading, filterText }) => {
 	return (
 		<div className="DocumentsTable table-responsive">
 			<table className="table table-striped table-sm">
@@ -14,7 +14,11 @@ const DocumentsTable = ({ myprops }) => {
 					</tr>
 				</thead>
 				<tbody>
-					<DocumentRows myprops={myprops} />
+					<DocumentRows
+						files={files}
+						loading={loading}
+						filterText={filterText}
+					/>
 				</tbody>
 			</table>
 		</div>
