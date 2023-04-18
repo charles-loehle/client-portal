@@ -29,6 +29,7 @@ const DocumentRows = ({ files, loading, filterText }) => {
 						file.data.timestamp.nanoseconds
 					);
 
+					// search filter using indexOf file name that contains input string: if input text is not contained in the file name (indexOf returns -1) return the loop without rendering that file
 					if (
 						file.data.name.toLowerCase().indexOf(filterText.toLowerCase()) ===
 						-1
